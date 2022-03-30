@@ -31,6 +31,40 @@ Patient DB:
      VisitType ( clinic/lab/inpatient)
      
   
+  MedicalRecords DB: 
+  
+    Immunizations Table: 
+       
+     PatientID
+     MedicalRecordID
+     Immunization_date
+     Immunazation_name
+     Immunization_location
+     Immunization_validition
+     
+   TestResults DB:
+     PatientID
+     DoctorID
+     MedicalRecordID
+     TestType
+     TestDate
+     TestTime
+     TestLabName
+     Location
+     Result
+     resultDateTime
+     ResultDetails
+     
+   PastVisits
+     patientID
+     medicalRecordID
+     AppointmentInfo
+     CareProvider
+     Caretype
+     visitSummary
+     PostVisitInstructions
+     vitalsInfo
+     other
      
  
      
