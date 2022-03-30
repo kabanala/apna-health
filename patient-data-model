@@ -66,5 +66,28 @@ Patient DB:
      vitalsInfo
      other
      
- 
+   HealthSummary
+    PatientID
+    DoctorID
+    HealthCondition
+    ConditionDescription
+    IdentifiedDate
+    ConditionStatus
+    CareInstructions
+    knomledgeBase
+    
+   allergies
+     PatientID
+     allergyType
+     AllergyName
+     AllergyDate
+     AllergyDescription
+  
+    Letters
+      patientID
+      subject
+      letter
+      date
+      
+  
      
