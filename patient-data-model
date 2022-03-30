@@ -1,0 +1,36 @@
+Databases : 
+
+
+  Patient 
+  Appointments
+  Medical Records
+  Labs
+  messaging 
+  
+Patient DB: 
+  Patient Table:
+     first name
+     last name
+     DateOfBirth
+     Address
+     phone No
+     Patient ID (auto generated)
+     MedicalID (auto generated)
+     EmailID
+     Zipcode
+     
+  Appointments Table: 
+     PatientID
+     DoctorID
+     LabID
+     Speciality
+     AppointmentDate
+     AppointmentTime
+     Location
+     Visit_status (boolean value enum yes or no)
+     VisitType ( clinic/lab/inpatient)
+     
+  
+     
+ 
+     
