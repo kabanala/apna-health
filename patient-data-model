@@ -13,7 +13,7 @@ Patient DB:
      last name
      DateOfBirth
      Address
-     phone No
+     phoneNo
      Patient ID (auto generated)
      MedicalID (auto generated)
      EmailID
@@ -24,6 +24,7 @@ Patient DB:
      DoctorID
      LabID
      Speciality
+     symptoms
      AppointmentDate
      AppointmentTime
      Location
@@ -89,5 +90,5 @@ Patient DB:
       letter
       date
       
-  
+    
      
