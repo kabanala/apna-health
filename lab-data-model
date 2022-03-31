@@ -1,23 +1,55 @@
-Labs DB: 
-  Appointments
-  LabProfile
-  LabTests
-  
-  
-  LabProfile
-     lab_id
-     name
-     location
-     specialities/tests
-     emailID
-     phoneNo
-     licenseNo
-     zipcode
-     availableTime
-     testTime
-     score 
-     issues
-     total_slots
-     
+Hosiptals Database : 
+Appointments
+Doctors
+Hospitals
+Labs Database
+  reports
+  appointments
+  messaging
+  profile
+
+   Appointments Table: 
+       LabID
+       PatientID
+       AppointmentDate
+       AppointmentTime
+       VisitStatus
+       visitType
+       DoctorReferenceID
+   
+   Technician:
+       TechnicianID
+       LabID
+       FirstName
+       LastName
+       Location
+       speciality
+       emailID
+       phoneNo
+       zipCode
+       certification
+       licenseNo
+       reviews
+       rating/score (1 - 5)
+       issue
+       
+   Labs
+       LabID
+       name
+       location
+       zipcode
+       [speciality/services/tests] (1-1-1 mapping with the tests_fee and total-slots)
+       [tests_fee]
+       total_slots
+       emailID
+       available_timings
+       doctorID. - if exits in doctorId , update here or else assign a new doctorID.
+       emailID
+       phoneNum
+       patientReviews
+       ratings/score
+       issue
+       licenseNo
+       certificate
       
   
