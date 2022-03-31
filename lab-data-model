@@ -4,3 +4,20 @@ Labs DB:
   LabTests
   
   
+  LabProfile
+     lab_id
+     name
+     location
+     specialities/tests
+     emailID
+     phoneNo
+     licenseNo
+     zipcode
+     availableTime
+     testTime
+     score 
+     issues
+     total_slots
+     
+      
+  
