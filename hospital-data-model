@@ -1,0 +1,47 @@
+Hosiptals Database : 
+
+   Appointments Table: 
+       DoctorID
+       PatientID
+       AppointmentDate
+       AppointmentTime
+       VisitStatus
+       visitType
+       DoctorReferenceID
+   Doctors
+       DoctorID
+       HospitalID
+       FirstName
+       LastName
+       Location
+       speciality
+       emailID
+       phoneNo
+       zipCode
+       certification
+       licenseNo
+       reviews
+       sex
+       availabilityTimes
+       consultationFee
+       waitTime
+       rating (1 - 5)
+       issue
+       
+   Hospitals
+       HospitalID
+       name
+       location
+       zipcode
+       services
+       speciality
+       timings
+       doctorID. - if exits in doctorId , update here or else assign a new doctorID.
+       emailID
+       phoneNum
+       patientReviews
+       ratings
+       issue
+       license
+       certificate
+  
