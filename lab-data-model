@@ -46,7 +46,6 @@ Labs Database
        total_slots
        emailID
        available_timings
-       doctorID. - if exits in doctorId , update here or else assign a new doctorID.
        emailID
        phoneNum
        patientReviews
@@ -75,8 +74,10 @@ Labs Database
        patientID
        doctorID
        testResultMsg
-       emailID
-       email
+       emailIDDoctor
+       emailIDpatient
+       technicianID
+       LabID
        
       
   
