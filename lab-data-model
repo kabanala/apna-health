@@ -1,7 +1,10 @@
-Hosiptals Database : 
-Appointments
-Doctors
-Hospitals
+Labs Database : 
+  Appointments
+  Technicians
+  Labs
+  LabResults
+  
+
 Labs Database
   reports
   appointments
@@ -51,5 +54,21 @@ Labs Database
        issue
        licenseNo
        certificate
+       
+       
+   LabResults:
+   
+       LabID
+       MedicalRecordID       
+       TechnicianID
+       doctorRefID
+       TestType
+       TestDate
+       TestTime
+       ResultDate
+       ResultTime
+       Result
+       ResultDetails
+       
       
   
