@@ -70,5 +70,13 @@ Labs Database
        Result
        ResultDetails
        
+   Messaging:
+   
+       patientID
+       doctorID
+       testResultMsg
+       emailID
+       email
+       
       
   
