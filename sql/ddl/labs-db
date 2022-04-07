@@ -1,42 +1,41 @@
  CREATE TABLE technician_info (
-       TechnicianID
-       LabID
-       FirstName
-       LastName
-       Location
-       speciality
-       emailID
-       phoneNo
-       zipCode
-       certification
-       licenseNo
-       reviews
-       rating/score (1 - 5)
-       issue
+       technician_id string OPTIONS(description="the unique id for the technician, Can be auto generated or created by the backend service"),
+       lab_id string OPTIONS(description="unique id of the lab where the technician belongs to "),
+       first_name string OPTIONS(description="first name of the technician"),
+       last_name string OPTIONS(description="last name of the technician"),
+       location string OPTIONS(description="primary address of the technician"),
+       speciality string OPTIONS(description="expertise of tests that can be performed by  the technician "),
+       email_id string OPTIONS(description="email address of the technician"),
+       phone_no string OPTIONS(description="phone number of the technician"),
+       zip_code string OPTIONS(description="zipcode of the technician"),
+       certification string OPTIONS(description="certification done to perform tests by the technician"),
+       license_no string OPTIONS(description="license no provdided by the government to perform the tests"),
+       reviews string OPTIONS(description="reviews about the technician "),
+       rating string OPTIONS(description="rating/score(1-5) about the technician"),
+       issue string OPTIONS(description="Issues filed about the technician")
       ) ;  
       
       
   CREATE TABLE lab_info (
-       LabID
-       name
-       location
-       zipcode
-       [speciality/services/tests] (1-1-1 mapping with the tests_fee and total-slots)
-       [tests_fee]
-       total_slots
-       emailID
-       available_timings
-       emailID
-       phoneNum
-       patientReviews
-       ratings/score
-       issue
-       licenseNo
-       certificate
+       lab_id string OPTIONS(description="the unique id for the lab),
+       name string OPTIONS(description="name of the lab"),
+       location string OPTIONS(description="location of the lab"),
+       zipcode string OPTIONS(description="location of the zipcode),
+       test_id string OPTIONS(description="unique id of the test"),
+       test_fees string OPTIONS(description="fees of the tests"),
+       total_slots string OPTIONS(description="total slots available"),
+       emailID string OPTIONS(description="email address of the lab"),
+       available_timings string OPTIONS(description="available timings for the test"),
+       phoneNum string OPTIONS(description="phone number of the lab"),
+       patientReviews string OPTIONS(description="patient reviews about the lab"),
+       rating string OPTIONS(description="rating/score(1-5) about the technician"),
+       issue string OPTIONS(description="Issues filed about the technician"),
+       license_no string OPTIONS(description="license no provdided by the government to perform the tests"),
+       certificate string OPTIONS(description="certification provided by the government to run the lab")
     ) ;   
        
    CREATE TABLE lab_results (
-       LabID
+       
        MedicalRecordID       
        TechnicianID
        doctorRefID
