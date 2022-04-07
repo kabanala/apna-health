@@ -70,8 +70,40 @@ CREATE TABLE patient_info
      vitals_info string OPTIONS(description= "Vitals observed on the patient at the time of the visit"),
      other string OPTIONS(description= "Other information abt the visit") ) ;
      
+  
+  CREATE TABLE health_summary (
+    patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
+    doctor_id string OPTIONS(description= "unique id of the doctor the patient visited"),
+    health_condition string OPTIONS(description= "diagnosed condition at the time of visit"),
+    condition_description string OPTIONS(description= "Detail description of the diagnosed condition"),
+    identified_date string OPTIONS(description= "date of identification"),
+    condition_status string OPTIONS(description= "Current status of the condition"),
+    care_instructions string OPTIONS(description= "Instrctions to follow to remediate the cause"),
+    knomledge_base string OPTIONS(description= "unique id of the doctor the patient visited") ) ;
+    
+    
+  CREATE TABLE allergies (
+     patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
+     allergy_type string OPTIONS(description="type of allergy"),
+     allergy_name string OPTIONS(description="name of the allergy"),
+     allergy_date string OPTIONS(description="Date of the Allergy thats been identified"),
+     allergy_description string OPTIONS(description="Detail description of the allergy")) ;
      
      
+   CREATE TABLE letters (
+      patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
+      doctor_id string OPTIONS(description="unique identification of the doctor visited"),
+      subject string OPTIONS(description="what is the letter about either day off / long period rest from work ond so forth"),
+      description string OPTIONS(description="Detail description of the details on how long the patient need to rest or take off or travel purposes"),
+      date string OPTIONS(description="Date the letter been created") ) ;
+      
+  CREATE TABLE messaging_system (
+      patient_id  string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
+      phone_num string OPTIONS(description="phone number of the patient to send the message"),
+      email_address string OPTIONS(description="email address of the patient to send the message"),
+      message_alert_type string OPTIONS(description="type of message"),
+      message_description string OPTIONS(description="Detail message to the patient") ) ; 
+      
    
   
   
