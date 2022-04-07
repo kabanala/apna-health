@@ -1,6 +1,8 @@
+gcloud config set project $$$$$$$
 
-  CREATE TABLE appointments 
-  (
+bq mk --dataset bh_appt_db
+
+bq query bq query --use_legacy_sql=false "CREATE TABLE bh_appt_db.appointments (
     patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
     doctor_id string OPTIONS(description="the unique id of the health care provider that the patient is going to visit "),
     lab_id string OPTIONS(description="unique id of the lab that the patient is going to visit"),
@@ -8,6 +10,6 @@
     symptoms string OPTIONS(description="symptons of the patient "),
     appointmentDate string OPTIONS(description="Date of the appointment"),
     appointmentTime string OPTIONS(description="Time of the Appointment"),
-    location string OPTIONS(description="Location of the health care provider / lab"),
-    visit_status boolean OPTIONS(description="whether the patient visited the health provider)
-    visit_type string OPTIONS(description="type of visit whether it is a  clinic/lab/inpatient) ) ;
+    location string OPTIONS(description="Location of the health care provider or lab"),
+    visit_status boolean OPTIONS(description="whether the patient visited the health provider"),
+    visit_type string OPTIONS(description="type of visit whether it is a  clinic or lab or inpatient"))"
