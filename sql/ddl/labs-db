@@ -1,1 +1,50 @@
-
+ CREATE TABLE technician_info (
+       TechnicianID
+       LabID
+       FirstName
+       LastName
+       Location
+       speciality
+       emailID
+       phoneNo
+       zipCode
+       certification
+       licenseNo
+       reviews
+       rating/score (1 - 5)
+       issue
+      ) ;  
+      
+      
+  CREATE TABLE lab_info (
+       LabID
+       name
+       location
+       zipcode
+       [speciality/services/tests] (1-1-1 mapping with the tests_fee and total-slots)
+       [tests_fee]
+       total_slots
+       emailID
+       available_timings
+       emailID
+       phoneNum
+       patientReviews
+       ratings/score
+       issue
+       licenseNo
+       certificate
+    ) ;   
+       
+   CREATE TABLE lab_results (
+       LabID
+       MedicalRecordID       
+       TechnicianID
+       doctorRefID
+       TestType
+       TestDate
+       TestTime
+       ResultDate
+       ResultTime
+       Result
+       ResultDetails
+) ;
