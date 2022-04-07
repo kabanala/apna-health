@@ -1,4 +1,8 @@
- CREATE TABLE technician_info (
+gcloud config set project $$$$$$$$$$
+
+bq mk --dataset bh_labs_db
+
+bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.technician_info (
        technician_id string OPTIONS(description="the unique id for the technician, Can be auto generated or created by the backend service"),
        lab_id string OPTIONS(description="unique id of the lab where the technician belongs to "),
        first_name string OPTIONS(description="first name of the technician"),
@@ -12,15 +16,13 @@
        license_no string OPTIONS(description="license no provdided by the government to perform the tests"),
        reviews string OPTIONS(description="reviews about the technician "),
        rating string OPTIONS(description="rating/score(1-5) about the technician"),
-       issue string OPTIONS(description="Issues filed about the technician")
-      ) ;  
+       issue string OPTIONS(description="Issues filed about the technician"))"
       
-      
-  CREATE TABLE lab_info (
-       lab_id string OPTIONS(description="the unique id for the lab),
+bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_info (
+       lab_id string OPTIONS(description="the unique id for the lab"),
        name string OPTIONS(description="name of the lab"),
        location string OPTIONS(description="location of the lab"),
-       zipcode string OPTIONS(description="location of the zipcode),
+       zipcode string OPTIONS(description="location of the zipcode"),
        test_id string OPTIONS(description="unique id of the test"),
        test_fees string OPTIONS(description="fees of the tests"),
        total_slots string OPTIONS(description="total slots available"),
@@ -31,11 +33,9 @@
        rating string OPTIONS(description="rating/score(1-5) about the technician"),
        issue string OPTIONS(description="Issues filed about the technician"),
        license_no string OPTIONS(description="license no provdided by the government to perform the tests"),
-       certificate string OPTIONS(description="certification provided by the government to run the lab")
-    ) ;   
+       certificate string OPTIONS(description="certification provided by the government to run the lab"))"
        
-   CREATE TABLE lab_results (
-       
+   bq query bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_results (
        medical_id string OPTIONS(description="medical id of the patient"),              
        doctor_id string OPTIONS(description="doctor id who prescribed the test"),
        test_type string OPTIONS(description="unique identification of the test"),
@@ -44,5 +44,4 @@
        result_date string OPTIONS(description="date of the result provided"),
        result_time string OPTIONS(description="time of the result provided"),
        result string OPTIONS(description="final result of the test"),
-       result_details string OPTIONS(description="Detail description of the result"),
-) ;
+       result_details string OPTIONS(description="Detail description of the result"))"
