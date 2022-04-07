@@ -1,6 +1,8 @@
+gcloud config set project $$$$$$
 
-CREATE TABLE patient_info 
-(
+bq mk --dataset bh_ptnt_db
+
+bq query bq query --use_legacy_sql=false "CREATE TABLE bh_ptnt_db.patient_info (
   id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
   first_name string OPTIONS(description="Firstname / givenName of the patient"),
   last_name string OPTIONS(description="Last name of the patient"),
@@ -15,4 +17,4 @@ CREATE TABLE patient_info
   state_prov string OPTIONS(description="current name of the state/province/ut the patient lives in"),
   country string OPTIONS(description="current name of the country the patient lives in "),
   zipcode string OPTIONS(description="zipcode of the patient"),
-  emergency_contact_id_list ARRAY<STRING> OPTIONS(description="emergency contact id's of the patient") );
+  emergency_contact_id_list ARRAY<STRING> OPTIONS(description="emergency contact id's of the patient"))"
