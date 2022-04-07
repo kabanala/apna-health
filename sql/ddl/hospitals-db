@@ -1,1 +1,36 @@
-
+CREATE TABLE doctor_info
+       doctor_id string OPTIONS(description="unique identification of the doctor"),
+       hospital_id string OPTIONS(description="unique identification of the hospital"),
+       first_name string OPTIONS(description="first name of the doctor"),
+       last_name string OPTIONS(description="last name of the doctor"),
+       location string OPTIONS(description="location of the doctor"),
+       speciality string OPTIONS(descripion="speciality of the doctor"),
+       email_id string OPTIONS(
+       phone_no
+       zip_code
+       certification
+       license_no
+       reviews
+       sex
+       availability_times
+       consultation_fee
+       wait_time
+       rating (1 - 5)
+       issue
+       
+   CREATE TABLE hospital_info (
+       hospital_id 
+       name
+       location
+       zip_code
+       services
+       speciality
+       timings
+       doctor_id. - if exits in doctorId , update here or else assign a new doctorID.
+       email_id
+       phone_num
+       patient_reviews
+       ratings
+       issue
+       license
+       certificate
