@@ -4,33 +4,33 @@ CREATE TABLE doctor_info
        first_name string OPTIONS(description="first name of the doctor"),
        last_name string OPTIONS(description="last name of the doctor"),
        location string OPTIONS(description="location of the doctor"),
-       speciality string OPTIONS(descripion="speciality of the doctor"),
-       email_id string OPTIONS(
-       phone_no
-       zip_code
-       certification
-       license_no
-       reviews
-       sex
-       availability_times
-       consultation_fee
-       wait_time
-       rating (1 - 5)
-       issue
+       speciality_id string OPTIONS(descripion="speciality of the doctor"),
+       email_id string OPTIONS(description="email address of the doctor"),
+       phone_no string OPTIONS(description="phone number of the doctor"),
+       zip_code string OPTIONS(description=zip code of the doctor"),
+       certification string OPTION(descrption= "certification of the doctor"), 
+       license_no string OPTION(description="license number provided by the government to operate as a doctor"),
+       reviews string OPTION(description="review abaut the doctor provided by the patient "),
+       sex string OPTION(description="biological sex of the doctor"),
+       availability_times string OPTION(description="available timings "),
+       consultation_fee string OPTION(description="consultation fee of the doctor"),
+       wait_time string OPTION(description="usual wait times at the doctor's place "),
+       rating string OPTION(description="ratings provided by the patients to the doctor "),
+       issue string OPTION(description="Issue reported by the patient about the doctor" ) ) ; 
        
    CREATE TABLE hospital_info (
-       hospital_id 
-       name
-       location
-       zip_code
-       services
-       speciality
-       timings
-       doctor_id. - if exits in doctorId , update here or else assign a new doctorID.
-       email_id
-       phone_num
-       patient_reviews
-       ratings
-       issue
-       license
-       certificate
+       hospital_id string OPTIONS(description="unique identification of the hospital"),
+       name string OPTIONS(description="name of the hospital"),
+       location string OPTIONS(description="location of the hospital"),
+       zip_code string OPTIONS(description="zip_code of the hospital"),
+       services string OPTIONS(description="services offered by the hospital to patients"),
+       speciality_id string OPTIONS(description="speciality id's provided by the hospital"),
+       timings string OPTIONS(description="open and close times of the hospital"),
+       doctor_id string OPTIONS(description="if exits in doctor_info table update here or else assign a new doctor_id or create one update here"),
+       email_id string OPTIONS(description="email address of the hospital"),
+       phone_num string OPTIONS(description="phone number of the hospital"),
+       patient_reviews string OPTIONS(description="patient_reviews provided by the patients about the hospital"),
+       ratings string OPTIONS(description="ratings of the hospital"),
+       issue string OPTIONS(description="Issue reported by the patient about the hospital"),
+       license string OPTIONS(description="license number of the hospital provided by the government"),
+       certificate string OPTIONS(description="certiicate provided by the government entity") ) ; 
