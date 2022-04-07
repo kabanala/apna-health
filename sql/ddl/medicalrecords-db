@@ -1,4 +1,8 @@
-CREATE TABLE immunizations
+gcloud config set project $$$$$$$
+
+bq mk --dataset bh_med_rec_db
+ 
+ bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.immunizations
   (
      patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
      doctor_id string OPTIONS(description= "unique id of the doctor who prescribed the immunization"),
@@ -6,23 +10,23 @@ CREATE TABLE immunizations
      immunization_date string OPTIONS(description= "Date of Immunization"),
      immunazation_name string OPTIONS(description= "Name of the Immunization"),
      immunization_location string OPTIONS(description= "Location of the Immunization"),
-     immunization_validition string OPTIONS(description= "validity date of the Immunization") );
-    
-  
-   CREATE TABLE tests (
+     immunization_validition string OPTIONS(description= "validity date of the Immunization"))"
+
+
+bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.tests (
      patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
      doctor_id string OPTIONS(description= "unique id of the doctor who prescribed the tests"),
      medical_id string OPTIONS(description= "Medical id of the patient"),
      test_type string OPTIONS(description= "type of the test"),
      test_date string OPTIONS(description= "Date of the test"),
-     test_time string OPTIONS(descrition= "Time of the test"), 
+     test_time string OPTIONS(description= "Time of the test"), 
      test_lab_name string OPTIONS(description= "Name of the Lab name"),
      location string OPTIONS(description= "Location of the Lab"),
      test_result string OPTIONS(description= "Result of the the test"),
      result_datetime string OPTIONS(description= "Result date of the test"), 
-     result_details string OPTIONS(description= " Detail description of the test ") ) ;
-     
-   CREATE TABLE past_visits (
+     result_details string OPTIONS(description= " Detail description of the test "))"
+
+  bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.past_visits (
      patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
      medical_id string OPTIONS(description= "Medical id of the patient"),
      appointment_info string OPTIONS(description= "Information about appointment"),
@@ -31,10 +35,10 @@ CREATE TABLE immunizations
      visit_summary string OPTIONS(description= "summary of the visit"),
      post_visit_instructions string OPTIONS(description= "Instructions provided to the patient regarding the visit"),
      vitals_info string OPTIONS(description= "Vitals observed on the patient at the time of the visit"),
-     other string OPTIONS(description= "Other information abt the visit") ) ;
-     
-  
-  CREATE TABLE health_summary (
+     other string OPTIONS(description= "Other information abt the visit") )"
+
+
+bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.health_summary (
     patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
     doctor_id string OPTIONS(description= "unique id of the doctor the patient visited"),
     health_condition string OPTIONS(description= "diagnosed condition at the time of visit"),
@@ -42,20 +46,19 @@ CREATE TABLE immunizations
     identified_date string OPTIONS(description= "date of identification"),
     condition_status string OPTIONS(description= "Current status of the condition"),
     care_instructions string OPTIONS(description= "Instrctions to follow to remediate the cause"),
-    knomledge_base string OPTIONS(description= "unique id of the doctor the patient visited") ) ;
-    
-    
-  CREATE TABLE allergies (
+    knomledge_base string OPTIONS(description= "unique id of the doctor the patient visited") )"
+   
+bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.allergies (
      patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
      allergy_type string OPTIONS(description="type of allergy"),
      allergy_name string OPTIONS(description="name of the allergy"),
      allergy_date string OPTIONS(description="Date of the Allergy thats been identified"),
-     allergy_description string OPTIONS(description="Detail description of the allergy")) ;
-     
-     
-   CREATE TABLE letters (
+     allergy_description string OPTIONS(description="Detail description of the allergy"))"
+
+
+bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.letters (
       patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
       doctor_id string OPTIONS(description="unique identification of the doctor visited"),
       subject string OPTIONS(description="what is the letter about either day off / long period rest from work ond so forth"),
       description string OPTIONS(description="Detail description of the details on how long the patient need to rest or take off or travel purposes"),
-      date string OPTIONS(description="Date the letter been created") ) ;
+      date string OPTIONS(description="Date the letter been created") )"
