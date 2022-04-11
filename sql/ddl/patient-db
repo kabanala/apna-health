@@ -18,4 +18,4 @@ bq query bq query --use_legacy_sql=false "CREATE TABLE bh_ptnt_db.patient_info (
   country string OPTIONS(description="current name of the country the patient lives in "),
   zipcode string OPTIONS(description="zipcode of the patient"),
   emergency_contact_id_list ARRAY<STRING> OPTIONS(description="emergency contact id's of the patient"),
-  visit_id string (description="This is is the unique id for each patient visit to doc/hospital/lab etc))"
+  visit_id string OPTIONS(description="This is is the unique id for each patient visit to doc/hospital/lab etc"))"
