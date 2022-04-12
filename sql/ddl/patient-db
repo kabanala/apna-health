@@ -22,6 +22,31 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_ptnt_db.patient_info (
   
   
  bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
-    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id)
-    values('258967', 'Dhruva', 'Vakte', 'Male', '1990-12-31', '1408586', '964977822900', 'dhruvag@gmail.com',
-           '9849034598, 'plot-no 345 skd nagar vanasthalipuram', 'Hyderabad', 'Telangana', 'India',	'500070', '9945678901',	'8901')"
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values('258967', 'Dhruva', 'Vakte', 'Male', '1990-12-31', '1408586', '964977822900', 'dhruvag@gmail.com', '9849034598, 'plot-no 345 skd nagar vanasthalipuram', 'Hyderabad', 'Telangana', 'India',	'500070', '9945678901',	'8901')"
+           
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('258978', 'Arjun', 'Ramoni', 'Male', '1983-11-05', '1408591', '990834567890', 'arjunra@hotmail.com', '9345890123', 'Plot No 598 Vagdehii Nagar LB Nagar', 'Hyderabad', 'Telangana', 'India', '500070', ["ec_cntct_1", "ec_cntct_2"], '8902')"
+
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('257987', 'Swapna', 'juketi' ,'Female', '1965-01-31', '1408221', '964367890090', 'swapnaju@gmail.com', '9973456789', 'Door No- 8/945 Sarawathi Nagar Santoshnagar', 'Warangal', 'Telangana', 'India', '500093', ["ec_cntct_1", "ec_cntct_2"], '8903')"
+
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+   adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('256777', 'Chris', 'Harris', 'Male', '1973-02-15', '1402345', '980892345671', 'chrishar@gmail.com', '9012398765', 'H-No 3-21 Lemoor Village Kandukur Mandal', 'Ranga Reddy', 'Telangana', 'India', '501359', ["ec_cntct_1", "ec_cntct_2"],  '8904')"
+
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('254908', 'Satoshi', 'Nakamoto', 'Male', '1995-08-21', '1409876', '998877661122', 'satonakao@gmail.com', '976523145', 'Plot No 6678 Sri Rama vari Veedhi Tenali', 'Guntur', 'Andhra Pradesh', 'India', '590834', ["ec_cntct_1", "ec_cntct_2"], '8905')"
+
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('254890', 'Lao', 'Tzu', 'Male', '1991-07-02', '1403456', '987652012451', 'laotzu@hotmail.com', '9012345690', 'H-no 1123 Sardar Patel Road', 'Delhi', 'New Delhi', 'India', '400234', ["ec_cntct_1", "ec_cntct_2"], '8906')"
+ 
+bq query --use_legacy_sql=false " INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('257879', 'Adam', 'Morgan', 'Male', '1980-01-28', '1409988', '923456789154', 'admorgan@gmail.com', '8976332450', 'Road No 53 Vinay Nagar Saidabad', 'Culcutta', 'West Bengal', 'India', '900234', ["ec_cntct_1", "ec_cntct_2"], '8907')"
+ 
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('257101', 'Sheela', 'Anand', 'Female', '1992-03-15', '1408767', '945671290431', 'shelaanad@gmail.com', '8901239021', 'Apt No 13 Beedar Rd 24/7', 'Porbandar', 'Gujrat', 'India', '890345', ["ec_cntct_1", "ec_cntct_2"], '8908')"
+
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('258323', 'Bhanu', 'Gangavarm', 'Female', '1972-07-07', '1402349', '912389765434', 'bhanuga@gmail.com', '9341239087', 'Plot No 398 Bijili Road', 'Banglore', 'Karnataka', 'India', '789043', ["ec_cntct_1", "ec_cntct_2"], '8909')"
+
+bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('259010', 'Diksha', 'Patel', 'Female', '1989-11-24', '1401133', '968901234521', 'dikpatel@yahoo.com', '9905891234', 'Appt No 345/A Srinagar Colony', 'Trivendram', 'Kerala', 'India', '650982', ["ec_cntct_1", "ec_cntct_2"], '8910')"
