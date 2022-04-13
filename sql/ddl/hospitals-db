@@ -8,7 +8,7 @@
        first_name string OPTIONS(description="first name of the doctor"),
        last_name string OPTIONS(description="last name of the doctor"),
        location string OPTIONS(description="location of the doctor"),
-       speciality_id string OPTIONS(description="speciality of the doctor"),
+       speciality_id ARRAY<STRING> OPTIONS(description="speciality of the doctor"),
        email_id string OPTIONS(description="email address of the doctor"),
        phone_no string OPTIONS(description="phone number of the doctor"),
        zip_code string OPTIONS(description="zip code of the doctor"),
