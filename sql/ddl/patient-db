@@ -50,3 +50,35 @@ bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_n
 
 bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
     adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('259010', 'Diksha', 'Patel', 'Female', '1989-11-24', '1401133', '968901234521', 'dikpatel@yahoo.com', '9905891234', 'Appt No 345/A Srinagar Colony', 'Trivendram', 'Kerala', 'India', '650982', ["ec_cntct_1", "ec_cntct_2"], '8910')"
+    
+###################
+
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10019', 'Medplus Hospital', 'Road no 10 LB Nagar Hyderabad', '500070', ["Inpatient", "OutPatient", "Surgeries", "Emergency"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day_night', ["D78950", "D78951"], 'help@medplus.com', '040-414567890', 'Great care. Great experience', '4', 'none', ["L12345", "L13451"], 'yes')"
+
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10289', 'Sai Clinic', 'Road no 58/34 Vanasthalipuram Hyderabad', '500070', ["OutPatient"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day', ["D78782"], 'madhavi@gmail.com', '9809234568', 'Staff was good but hospital is a mess', '3.5', 'none', ["L12345"], 'yes')"  
+
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10930', 'Miniute Clinic', 'Road no 8-32 Vasanthanagar warangal', '500093', ["OutPatient"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day', ["D78901"], 'chris@gmail.com', '8902345683', 'Very clean hospital', '4', 'none', ["L12948"], 'yes')"
+
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10370', 'Isha Hospital', 'Door no 32 Vaidehi Nagar RangaReddy', '501359', ["Inpatient", "OutPatient"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day_night', ["D78771"], 'maya@gmail.com', '9928683823', 'Reasonable price and fried staff', '3.5', 'none', ["L12679"], 'yes')"
+ 
+bq query --use_legacy_sql=false " INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10870', 'Yash medical center', 'Appt no 1234/a Saraswathi Nagar Guntur', '590834', ["Inpatient", "OutPatient", "Emergency"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day_night', ["D78601"], 'riyaan@gmail.com', '8680382398', 'High price and huge wait time', '2.5', 'none', ["L12799"], 'yes')"
+  
+bq query --use_legacy_sql=false " INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10720', 'Sinica Clinic', 'Door no 34/b swathi road Delhi', '400234', ["Inpatient", "OutPatient", "Emergency"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day', ["D78501"], 'ishach@gmail.com', '8089821398', 'Excellent Service and treatment', '4', 'none', ["L12701"], 'yes')"
+
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10420', 'Sakshi Clinic', 'Road no 555 hyder ali road Culcutta', '900234', ["Inpatient", "OutPatient", "Surgeries", "Emergency"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day', ["D78661"], 'sbhatia@gmail.com', '9821398400', 'Reasonable treatment', '3.5', 'none', ["L12910"], 'yes')"
+  
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10556', 'Konark Hospital', 'Road no 31 vinaynagar colony gujrat', '890345', ["Inpatient", "OutPatient", "Surgeries"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day_night', ["D78591"], 'vikas@gmail.com', '8139840090', 'expect heavy wait time', '3.5', 'none', ["L12681"], 'yes')"
+  
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10678', 'Paramedic Hospital', 'Road no 1324 Gaya colony Banglore', '789043', ["Inpatient", "OutPatient", "Surgeries", "Emergency"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day_night', ["D78910"], 'Sharma@gmail.com', '9013248400', 'good and reasonable prices', '4', 'none', ["L12119"], 'yes')"
+ 
+bq query --use_legacy_sql=false "INSERT bh_hspt_db.hospital_info(hospital_id, name,  location, zip_code,  services, speciality_id, timings, doctor_id, email_id, phone_num, patient_reviews, ratings, issue, license,  certificate)                   
+                         values('H10786', 'Sunrise Hospital', 'Door no 24 Lal Dharwaja colony Trivendrem Kerala', '650982', ["Inpatient", "OutPatient", "Surgeries", "Emergency"], ["general_physician", "cardiology", "neurology", "gynocologist"], 'ist_day_night', ["D78190"], 'priya@gmail.com', '9484003125', 'Excellent', '3', 'none', ["L12950"], 'yes')"
