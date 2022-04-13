@@ -38,3 +38,34 @@ bq query bq query --use_legacy_sql=false "CREATE TABLE bh_hspt_db.hospital_info 
        issue string OPTIONS(description="Issue reported by the patient about the hospital"),
        license string OPTIONS(description="license number of the hospital provided by the government"),
        certificate string OPTIONS(description="certiicate provided by the government entity") ) ; 
+       
+       
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78951', 'H10019', 'Prakash', 'Deva', 'Road no 10 LB Nagar Hyderabad', 'cardiology', 'prakashd@gmail.com', '7109234568', '500070', 'yes', 'L12345', 'Took great care. Entire visit was a great experience', 'male', 'ist_day', '600', '15 mins', '4.5', 'none')"
+
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78782', 'H10289', 'madhavi', 'Pratap', 'Road no 58/34 Vanasthalipuram Hyderabad', 'gynocologist', 'madhavi@gmail.com', '9809234568', '500070', 'yes', 'L12849', 'Staff was good but hospital is a mess', 'female', 'ist_day', '800', '30 mins', '3.5', 'none')"
+
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)                                                   
+                          values('D78901', 'H10930', 'Chris', 'Brown', 'Road no 8-32 Vasanthanagar warangal', 'general_physician', 'chris@gmail.com', '8902345683', '500093', 'yes', 'L12948', 'Very clean hospital', 'male', 'ist_day', '700', '15 mins', '4', 'none')"
+
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78771', 'H10370', 'Maya', 'Preet', 'Door no 32 Vaidehi Nagar RangaReddy', 'neurology', 'maya@gmail.com', '9928683823', '501359', 'yes', 'L12769', 'Reasonable price and friendly staff', 'male', 'ist_day', '700', '15 mins', '3.5', 'none')"
+
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)                        
+                          values('D78601', 'H10870', 'Riyaan', 'Misra', 'Appt no 1234/a Saraswathi Nagar Guntur', 'general_physician', 'riyaan@gmail.com', '8680382398', '590834', 'yes', 'L12799', 'High price and huge wait time', 'male', 'ist_day', '450', '45 mins', '2.5', 'none')"
+
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78501', 'H10720', 'Isha', 'Chawla', 'Door no 34/b swathi road Delhi', 'gynocologist', 'ishach@gmail.com', '8089821398', '400234', 'yes', 'L12701', 'Excellent Service and treatment', 'female', 'ist_day', '1000', '15 mins', '4.5', 'none')"
+
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78661', 'H10420', 'Sharath', 'Bhatia', 'Road no 555 hyder ali road Culcutta', 'general_physician', 'sbhatia@gmail.com', '9821398400', '900234', 'yes', 'L12910', 'Reasonable treatment', 'male', 'ist_day', '800', '30 mins', '3.5', 'none')"
+                          
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78591', 'H10556', 'Vikas', 'Pirra', 'Road no 31 vinaynagar colony gujrat', 'neurology', 'vikas@gmail.com', '8139840090', '890345', 'yes', 'L12681', 'expect heavy wait time', 'male', 'ist_day', '400', '90 mins', '3.5', 'none')"
+ 
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78910', 'H10678', 'Ankit', 'Sharma', 'Road no 1324 Gaya colony Banglore', 'general_physician', 'Sharma@gmail.com', '9013248400', '789043', 'yes', 'L12119', 'good and reasonable prices', 'male', 'ist_day', '1000', '30 mins', '4', 'none')"
+  
+bq query bq query --use_legacy_sql=false "INSERT bh_hspt_db.doctor_info (doctor_id, hospital_id, first_name, last_name, location, speciality_id, email_id, phone_no, zip_code, certification, license_no, reviews, sex, availability_times, consultation_fee, wait_time, rating, issue)
+                          values('D78190', 'H10786', 'Priya', 'Akash', 'Door no 24 Lal Dharwaja colony Trivendrem Kerala', 'general_physician', 'priya@gmail.com', '9484003125', '650982', 'yes', 'L12950', 'Excellent', 'female', 'ist_day', '900', '15 mins', '3', 'none')" 
