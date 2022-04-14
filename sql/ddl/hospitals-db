@@ -36,7 +36,7 @@ bq query bq query --use_legacy_sql=false "CREATE TABLE bh_hspt_db.hospital_info 
        patient_reviews string OPTIONS(description="patient_reviews provided by the patients about the hospital"),
        ratings string OPTIONS(description="ratings of the hospital"),
        issue string OPTIONS(description="Issue reported by the patient about the hospital"),
-       license string OPTIONS(description="license number of the hospital provided by the government"),
+       license ARRAY<STRING> OPTIONS(description="license number of the hospital provided by the government"),
        certificate string OPTIONS(description="certiicate provided by the government entity"))"
        
 
