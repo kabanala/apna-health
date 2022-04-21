@@ -2,13 +2,13 @@ gcloud config set project $$$$$$$$$$
 
 bq mk --dataset bh_labs_db
 
-bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.technician_info (
+bq query --use_legacy_sql=false "bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.technician_info (
        technician_id string OPTIONS(description="the unique id for the technician, Can be auto generated or created by the backend service"),
        lab_id string OPTIONS(description="unique id of the lab where the technician belongs to "),
        first_name string OPTIONS(description="first name of the technician"),
        last_name string OPTIONS(description="last name of the technician"),
        location string OPTIONS(description="primary address of the technician"),
-       speciality string OPTIONS(description="expertise of tests that can be performed by  the technician "),
+       speciality ARRAY<STRING> OPTIONS(description="expertise of tests that can be performed by  the technician "),
        email_id string OPTIONS(description="email address of the technician"),
        phone_no string OPTIONS(description="phone number of the technician"),
        zip_code string OPTIONS(description="zipcode of the technician"),
