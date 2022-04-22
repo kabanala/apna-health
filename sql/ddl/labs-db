@@ -37,15 +37,18 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_info (
        certification string OPTIONS(description="certification provided by the government to run the lab"))"
        
    bq query bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_results (
+       lab_id string,
+       pat_id string OPTIONS(description="patitent id of the patient"),
        medical_id string OPTIONS(description="medical id of the patient"),              
        doctor_id string OPTIONS(description="doctor id who prescribed the test"),
-       test_type string OPTIONS(description="unique identification of the test"),
-       test_date string OPTIONS(description="date of the test done"),
-       test_time string OPTIONS(description="time of the test done"),
+       test_id ARRAY<STRING> OPTIONS(description="unique identification of the test"),
+       tests_speciality ARRAY<STRING> OPTIONS(description="unique id of the test"),
+       test_date date OPTIONS(description="date of the test done"),
+       test_time time OPTIONS(description="time of the test done"),
        result_date string OPTIONS(description="date of the result provided"),
        result_time string OPTIONS(description="time of the result provided"),
-       result string OPTIONS(description="final result of the test"),
-       result_details string OPTIONS(description="Detail description of the result"))"
+       result ARRAY<STRING> OPTIONS(description="final result of the test"),
+       result_details ARRAY<STRING>  OPTIONS(description="Detail description of the result"))"
        
        
 #########bh_labs_db.technician_info DML #################
