@@ -22,7 +22,7 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_ptnt_db.patient_info (
   
   
  bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
-    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values('258967', 'Dhruva', 'Vakte', 'Male', '1990-12-31', '1408586', '964977822900', 'dhruvag@gmail.com', '9849034598, 'plot-no 345 skd nagar vanasthalipuram', 'Hyderabad', 'Telangana', 'India',	'500070', '9945678901',	'8901')"
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values('258967', 'Dhruva', 'Vakte', 'Male', '1990-12-31', '1408586', '964977822900', 'dhruvag@gmail.com', '9849034598, 'plot-no 345 skd nagar vanasthalipuram', 'Hyderabad', 'Telangana', 'India',	'500070', '9945678901',	'null')"
            
 bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
     adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('258978', 'Arjun', 'Ramoni', 'Male', '1983-11-05', '1408591', '990834567890', 'arjunra@hotmail.com', '9345890123', 'Plot No 598 Vagdehii Nagar LB Nagar', 'Hyderabad', 'Telangana', 'India', '500070', ["ec_cntct_1", "ec_cntct_2"], '8902')"
@@ -49,5 +49,5 @@ bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_n
     adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('258323', 'Bhanu', 'Gangavarm', 'Female', '1972-07-07', '1402349', '912389765434', 'bhanuga@gmail.com', '9341239087', 'Plot No 398 Bijili Road', 'Banglore', 'Karnataka', 'India', '789043', ["ec_cntct_1", "ec_cntct_2"], '8909')"
 
 bq query --use_legacy_sql=false "INSERT bh_ptnt_db.patient_info ( pat_id,first_name,last_name, sex,birth_date, medical_id,
-    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('259010', 'Diksha', 'Patel', 'Female', '1989-11-24', '1401133', '968901234521', 'dikpatel@yahoo.com', '9905891234', 'Appt No 345/A Srinagar Colony', 'Trivendram', 'Kerala', 'India', '650982', ["ec_cntct_1", "ec_cntct_2"], '8910')"
+    adhar_id,email_id,phone_no,address, city,state_prov, country, zipcode,emergency_contact_id_list, visit_id) values ('259010', 'Diksha', 'Patel', 'Female', '1989-11-24', '1401133', '968901234521', 'dikpatel@yahoo.com', '9905891234', 'Appt No 345/A Srinagar Colony', 'Trivendram', 'Kerala', 'India', '650982', ["ec_cntct_1", "ec_cntct_2"], 'null')"
     
