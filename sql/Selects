@@ -19,3 +19,19 @@ and hospital.name = 'Medplus Hospital'
 join bh_hspt_db.doctor_info doctor 
 on hospital.hospital_id = doctor.hospital_id where hospital.zip_code = '500070' and 'general_physician' in UNNEST (doctor.speciality_id) 
 and hospital.name = 'Medplus Hospital' and first_name = 'Akhil'
+
+
+###Check Patients visit, Appt for Symtoms, and tests ordered and test results 
+
+ select patient.first_name, patient.last_name, patient.medical_id, 
+appt.visit_id, 
+appt.symptoms,
+labs.tests_speciality, labs.result, labs.result_details,
+doctor.first_name,doctor.last_name
+from bh_ptnt_db.patient_info patient
+join bh_labs_db.lab_results labs
+ON patient.visit_id = labs.visit_id
+join bh_appt_db.appointments appt
+ON patient.visit_id = appt.visit_id
+join bh_hspt_db.doctor_info doctor
+ON doctor.doctor_id = appt.doctor_id
