@@ -101,19 +101,19 @@ bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, locati
                           
 ############ bh_labs_db.lab_results DML#################################
                         
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30987','258978','1408591', 'D78950', ["CT100", "BT205"], ["CTScan", "Blood Work"], '2022-04-18', '09:30:00', '2022-04-19', '10:00:00', ["CT100=Normal", "BT205=ATS-35"], ["No abnormality in CT Scan", "Med Fatty lever"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30765', '257987','1408221', 'D78951', ["USC192"], ["UltraSound"], '2022-04-10', '11:30:00', '2022-04-12', '10:30:00', ["USC192=AbNormal"], ["abnormality UltraSound See attached"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30587','254908','1409876', 'D78601', ["COV19"], ["Covid"], '2022-03-18', '11:45:00', '2022-03-19', '10:05:00', ["COV19=Negative"], ["No sars-covid"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30872','256777','1402345', 'D78771', ["BT205"], ["Blood Work"], '2022-04-10', '11:30:00', '2022-04-12', '10:00:00', ["BT205=Sugar-240"], ["abnormality Sugar Levels"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30721', '254890','1403456', 'D78501', ["MR200"], ["MRI"], '2022-04-01', '12:30:00', '2022-04-05', '4:00:00', ["MR200=Normal"], ["No abnormality in MRI Scan"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30217','257879','1409988', 'D78661', ["COV19"], ["Covid"], '2022-02-18', '04:30:00', '2022-02-19', '08:00:00', ["COV19=Positive"], ["sars-covid Positive"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30728','257101', '1408767', 'D78591', ["CT100"], ["CTScan"], '2022-04-05', '09:45:00', '2022-04-06', '10:55:00', ["CT100=AbNormal"], ["abnormality in CT Scan see attached"])"
-bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
-                                 values('LB30281', '258323', '1402349', 'D78910', ["BT205"], ["Blood Work"], '2022-03-18', '02:30:00', '2022-03-19', '4:30:00', ["BT205=Sugar-240"], ["High Sugar Levels Detected"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                values('LB30987','258978','1408591', 'D78950', '8902', ["CT100", "BT205"], ["CTScan", "Blood Work"], '2022-04-18', '09:30:00', '2022-04-19', '10:00:00', ["CT100=Normal", "BT205=ATS-35"], ["No abnormality in CT Scan", "Med Fatty lever"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30765', '257987','1408221', 'D78951', '8903', ["USC192"], ["UltraSound"], '2022-04-10', '11:30:00', '2022-04-12', '10:30:00', ["USC192=AbNormal"], ["abnormality UltraSound See attached"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30587','254908','1409876', 'D78601', '8905', ["COV19"], ["Covid"], '2022-03-18', '11:45:00', '2022-03-19', '10:05:00', ["COV19=Negative"], ["No sars-covid"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30872','256777','1402345', 'D78771', '8904', ["BT205"], ["Blood Work"], '2022-04-10', '11:30:00', '2022-04-12', '10:00:00', ["BT205=Sugar-240"], ["abnormality Sugar Levels"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30721', '254890','1403456', 'D78501', '8906', ["MR200"], ["MRI"], '2022-04-01', '12:30:00', '2022-04-05', '4:00:00', ["MR200=Normal"], ["No abnormality in MRI Scan"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30217','257879','1409988', 'D78661', '8907', ["COV19"], ["Covid"], '2022-02-18', '04:30:00', '2022-02-19', '08:00:00', ["COV19=Positive"], ["sars-covid Positive"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30728','257101', '1408767', 'D78591', '8908', ["CT100"], ["CTScan"], '2022-04-05', '09:45:00', '2022-04-06', '10:55:00', ["CT100=AbNormal"], ["abnormality in CT Scan see attached"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                            values('LB30281', '258323', '1402349', 'D78910', ' 8909', ["BT205"], ["Blood Work"], '2022-03-18', '02:30:00', '2022-03-19', '4:30:00', ["BT205=Sugar-240"], ["High Sugar Levels Detected"])"
