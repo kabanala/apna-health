@@ -41,6 +41,7 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_info (
        pat_id string OPTIONS(description="patitent id of the patient"),
        medical_id string OPTIONS(description="medical id of the patient"),              
        doctor_id string OPTIONS(description="doctor id who prescribed the test"),
+       visit_id string OPTIONS(description="visit id for each doc/lab visit"),
        test_id ARRAY<STRING> OPTIONS(description="unique identification of the test"),
        tests_speciality ARRAY<STRING> OPTIONS(description="unique id of the test"),
        test_date date OPTIONS(description="date of the test done"),
