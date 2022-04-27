@@ -35,3 +35,13 @@ join bh_appt_db.appointments appt
 ON patient.visit_id = appt.visit_id
 join bh_hspt_db.doctor_info doctor
 ON doctor.doctor_id = appt.doctor_id
+
+
+###### Offline ETL Job to update medical records every day###
+
+--INSERT INTO bh_med_rec_db.tests
+--SELECT lab.pat_id,lab.doctor_id,lab.medical_id,lab.visit_id,lab.tests_speciality,lab.test_date,lab.test_time,lab_info.name,lab_info.location,lab.result,
+--lab.result_date, lab.result_time,lab.result_details
+--FROM bh_labs_db.lab_results lab
+--join bh_labs_db.lab_info lab_info
+ --on lab.lab_id = lab_info.lab_id
