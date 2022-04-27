@@ -23,10 +23,10 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.tests (
      test_time time OPTIONS(description= "Time of the test"), 
      test_lab_name string OPTIONS(description= "Name of the Lab name"),
      location string OPTIONS(description= "Location of the Lab"),
-     test_result string OPTIONS(description= "Result of the the test"),
+     test_result ARRAY<STRING> OPTIONS(description= "Result of the the test"),
      result_date date,
      result_time time OPTIONS(description= "Result date of the test"), 
-     result_details string OPTIONS(description= " Detail description of the test "))"
+     result_details ARRAY<STRING> OPTIONS(description= " Detail description of the test "))"
 
   bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.past_visits (
      patient_id string OPTIONS(description="the unique id for each patient, Can be auto generated or created by the backend service"),
