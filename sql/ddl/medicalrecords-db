@@ -24,8 +24,8 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.tests (
      test_lab_name string OPTIONS(description= "Name of the Lab name"),
      location string OPTIONS(description= "Location of the Lab"),
      test_result ARRAY<STRING> OPTIONS(description= "Result of the the test"),
-     result_date date,
-     result_time time OPTIONS(description= "Result date of the test"), 
+     result_date string,
+     result_time string OPTIONS(description= "Result date of the test"), 
      result_details ARRAY<STRING> OPTIONS(description= " Detail description of the test "))"
 
   bq query --use_legacy_sql=false "CREATE TABLE bh_med_rec_db.past_visits (
