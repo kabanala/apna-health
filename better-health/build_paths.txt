@@ -1,0 +1,4 @@
+list  all the patients 
+get the patient with patient id 
+get the appointments with patient id
+

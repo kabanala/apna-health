@@ -1,0 +1,865 @@
+swagger: '2.0'
+info:
+  description: Better Health Backend service
+  version: 0.0.1
+  title: Better Health Backend 
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+  contact:
+    name: Karthik Banala, Sadanand Kadari
+    email: karthikbanala@mail.com, sadanandkadari@gmail.com
+host: localhost
+basePath: /betterhealth
+tags:
+  - name: patients
+    description: Interact with patients API
+  - name: doctors
+    description: interact with doctors API
+  - name: labs
+    description: Interact with labs API
+  - name: pharmacies
+    desciption: Interact with pharmacies API
+      
+schemes:
+  - https
+  - http
+securityDefinitions:
+  api_key:
+    type: "apiKey"
+    name: "api_key"
+    in: "header"
+paths:
+  /patients/login
+  /patients/patient_id
+  /jobs/{job_id}/jobRuns:
+    parameters:
+      - name: job_id
+        in: path
+        required: true
+        type: string
+    get:
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/jobRuns'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      security:
+        - api_key: []
+      summary: get job run list
+      description: get job run list
+      operationId: get_job_run_list
+      parameters:
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: name of app
+        - name: version
+          in: query
+          type: string
+          required: true
+          description: name of app
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+        - name: limit
+          in: query
+          type: integer
+          format: int32
+          description: query limit for jobRuns
+        - name: offset
+          in: query
+          type: integer
+          format: int32
+          description: query offset for JobRuns
+      tags:
+        - jobs
+  /jobs/{job_id}/jobRuns/{run_id}:
+    parameters:
+      - name: job_id
+        in: path
+        required: true
+        type: string
+        description: job id to query
+      - name: project_name
+        in: query
+        type: string
+        required: true
+        description: name of project
+      - name: app_name
+        in: query
+        type: string
+        required: true
+        description: name of app
+      - name: job_type
+        in: query
+        type: string
+        required: true
+        description:
+          Job type ["research", "pre-prod", "prod"], and only research
+          requires notebook_path
+      - name: version
+        in: query
+        type: string
+        required: true
+        description: name of app
+      - name: run_id
+        in: path
+        required: true
+        type: string
+        description: job run id to query
+    get:
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/jobRunDetails'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Get job run details
+      operationId: get_job_run_details
+      tags:
+        - jobs
+  /jobs:
+    put:
+      security:
+        - api_key: []
+      responses:
+        '201':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/Pipeline'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Update Pipeline/job configuration
+      operationId: update_job
+      parameters:
+        - name: job_id
+          in: query
+          required: true
+          type: string
+          description: Job id for the job
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: version
+          in: query
+          type: string
+          required: true
+          description: version
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: name of the app
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Pipeline'
+      tags:
+        - jobs
+    get:
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/PipelineList'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Get notebook jobs for given user or given app
+      operationId: get_user_jobs
+      parameters:
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: User name for the notebook job
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+      tags:
+        - jobs
+    post:
+      security:
+        - api_key: []
+      responses:
+        '201':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/Pipeline'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Create a notebook job
+      operationId: create_job
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/Pipeline'
+      tags:
+        - jobs
+  /logs/{job_id}/{run_id}:
+    get:
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/TaskInstanceLogCollection'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Get notebook job run logs
+      operationId: get_job_run_log
+      parameters:
+        - name: job_id
+          in: path
+          type: string
+          required: true
+          description: job id
+        - name: run_id
+          in: path
+          type: string
+          required: true
+          description: job run id
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: name of user name or app name
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: version
+          in: query
+          type: string
+          required: true
+          description: version
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+      tags:
+        - logs
+  /job/start/{job_id}:
+    post:
+      security:
+        - api_key: [ ]
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/PipelineInfo'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: trigger a job
+      operationId: trigger_job
+      parameters:
+        - name: job_id
+          in: path
+          type: string
+          required: true
+          description: job id
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: name of user name or app name
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: version
+          in: query
+          type: string
+          required: true
+          description: version
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+        - name: body
+          in: body
+          required: false
+          schema:
+            type: object
+            properties:
+              config:
+                type: object
+      tags:
+        - jobs
+  /job/pause/{job_id}:
+    post:
+      security:
+        - api_key: [ ]
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/PipelineInfo'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: pause a job
+      operationId: pause_job
+      parameters:
+        - name: job_id
+          in: path
+          type: string
+          required: true
+          description: job id
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: name of user name or app name
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: version
+          in: query
+          type: string
+          required: true
+          description: version
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+        - name: is_paused
+          in: query
+          type: boolean
+          required: true
+          description: whether pause job
+      tags:
+        - jobs
+  /log/details:
+    post:
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/TaskInstanceLog'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Get notebook task log details
+      operationId: get_task_log_details
+      parameters:
+        - name: body
+          in: body
+          schema:
+            $ref: '#/definitions/TaskInstance'
+      tags:
+        - logs
+  /jobs/{job_id}:
+    get:
+      security:
+        - api_key: []
+      responses:
+        '200':
+          description: SUCCESS
+          schema:
+            $ref: '#/definitions/PipelineInfo'
+        default:
+          description: error
+          schema:
+            $ref: '#/definitions/error'
+      summary: Get notebook job details
+      operationId: get_job
+      parameters:
+        - name: job_id
+          in: path
+          type: string
+          required: true
+        - name: app_name
+          in: query
+          type: string
+          required: true
+          description: name of user name or app name
+        - name: project_name
+          in: query
+          type: string
+          required: true
+          description: name of project
+        - name: version
+          in: query
+          type: string
+          required: true
+          description: version
+        - name: job_type
+          in: query
+          type: string
+          required: true
+          description:
+            Job type ["research", "pre-prod", "prod"], and only research
+            requires notebook_path
+      tags:
+        - jobs
+produces:
+  - application/json
+consumes:
+  - application/json
+definitions:
+  jobRuns:
+    properties:
+      project_name:
+        type: string
+      app_name:
+        type: string
+      total:
+        type: integer
+        format: int32
+      job_run_list:
+        items:
+          $ref: '#/definitions/jobRun'
+        type: array
+  jobRunDetails:
+    properties:
+      jobrun:
+        $ref: '#/definitions/jobRun'
+      instances:
+        type: array
+        items:
+          $ref: '#/definitions/TaskInstanceInfo'
+  jobRun:
+    properties:
+      job_run_id:
+        type: string
+      job_id:
+        type: string
+      start_date:
+        type: string
+        format: date-time
+      end_date:
+        type: string
+        format: date-time
+      execution_date:
+        type: string
+        format: date-time
+      state:
+        type: string
+      external_trigger:
+        type: boolean
+    type: object
+  PipelineList:
+    items:
+      $ref: '#/definitions/Pipeline'
+    type: array
+  error:
+    type: object
+    required:
+      - message
+    properties:
+      code:
+        type: integer
+        format: int64
+      message:
+        type: string
+  Pipeline:
+    properties:
+      id:
+        type: string
+        description: name of the job/pipeline
+        x-go-custom-tag: "gorm:\"primaryKey\""
+      version:
+        type: string
+        description: version of pipeline
+        x-go-custom-tag: "gorm:\"primaryKey\""
+      project_name:
+        type: string
+        description: name of the project the job/pipeline belongs to
+        x-go-custom-tag: "gorm:\"project_name,omitempty\""
+      app_name:
+        type: string
+        description: name of the app the job/pipeline belongs to
+        x-go-custom-tag: "gorm:\"app_name,omitempty\""
+      namespace:
+         type: string
+         description: Namespace the job/pipeline belongs to
+         x-go-custom-tag: "gorm:\"namespace,omitempty\""
+      start_time:
+        type: string
+        format: date-time
+        description: Start time in the format YYYY-MM-DD HH:MM:SS
+        x-go-custom-tag: "gorm:\"start_time,omitempty\""
+      end_time:
+        type: string
+        format: date-time
+        description: End time of the job task.
+        x-go-custom-tag: "gorm:\"end_time,omitempty\""
+      user_name:
+        type: string
+        description: user_name / app_name to run the job
+        x-go-custom-tag: "gorm:\"user_name,omitempty\""
+      interval:
+        type: string
+        enum:
+          -  None
+          - '@once'
+          - '@hourly'
+          - '@daily'
+          - '@weekly'
+          - '@monthly'
+          - '@yearly'
+        description: run the job in specific intervals.
+        x-go-custom-tag: "gorm:\"interval,omitempty\""
+      failure_email:
+        type: string
+        description: List of emails that can receive the job failure notification
+        x-go-custom-tag: "gorm:\"failure_email,omitempty\""
+      success_email:
+        type: string
+        description: List of emails that can receive the job failure notification
+        x-go-custom-tag: "gorm:\"success_email,omitempty\""
+      email_on_failure:
+        type: boolean
+        description: whether to send the failure notification
+        x-go-custom-tag: "gorm:\"email_on_failure,omitempty\""
+      email_on_success:
+        type: boolean
+        description: whether to send the success notification
+        x-go-custom-tag: "gorm:\"email_on_success,omitempty\""
+      job_type:
+        type: string
+        enum:
+          - research
+          - pre-prod
+          - prod
+        description:
+          Job type ["research", "pre-prod", "prod"], and only research requires notebook_path
+        x-go-custom-tag: "gorm:\"job_type,omitempty\""
+      ts:
+        type: string
+        description: start time of the job task.
+        x-go-custom-tag: "gorm:\"ts,omitempty\""
+      previous_ts:
+        type: string
+        description: start time of the job task.
+        x-go-custom-tag: "gorm:\"previous_ts,omitempty\""
+      user_access_control:
+        type: string
+        description: start time of the job task.
+        x-go-custom-tag: "gorm:\"user_access_control,omitempty\""
+      tasks:
+        type: array
+        items:
+          $ref: '#/definitions/Task'
+        description: List of tasks for a given job
+        x-go-custom-tag: "gorm:\"tasks\""
+      task_dependencies:
+        type: array
+        items:
+          $ref: '#/definitions/TaskDependency'
+        description: List of dependency tasks
+        x-go-custom-tag: "gorm:\"task_dependencies\""
+  TaskDependency:
+    properties:
+      id:
+        type: string
+        description: dependent task id
+        x-go-custom-tag: "gorm:\"id,omitempty\""
+      version:
+        type: string
+        description: version of the pipeline
+        x-go-custom-tag: "gorm:\"version,omitempty\""
+      task_list:
+        type: string
+        description: List of the task names the dependentTask depends on
+        x-go-custom-tag: "gorm:\"task_list,omitempty\""
+      pipeline_id:
+        type: string
+        description: pipeline id
+        x-go-custom-tag: "gorm:\"pipeline_id,omitempty\""
+  Volume:
+    properties:
+      id:
+        type: string
+        description: name and claim name
+        x-go-custom-tag: "gorm:\"primaryKey\""
+      task_id:
+        type: string
+        description: task_id associated with the volume
+        x-go-custom-tag: "gorm:\"task_id,omitempty\""
+      mount_path:
+        type: string
+        description: mount_name
+        x-go-custom-tag: "gorm:\"mount_path,omitempty\""
+      pipeline_id:
+        type: string
+        description: task id
+        x-go-custom-tag: "gorm:\"foreignkey:pipelines.pipeline_id;references:pipeline_id\""
+      version:
+        type: string
+        description: version of the pipeline
+        x-go-custom-tag: "gorm:\"primaryKey\""
+  Task:
+    properties:
+      id:
+        type: string
+        description: Task id of the job/pipeline
+        x-go-custom-tag: "gorm:\"primaryKey\""
+      pipeline_id:
+        type: string
+        description: Job id
+        x-go-custom-tag: "gorm:\"primaryKey\""
+      namespace:
+        type: string
+        description: Namespace of the job/pipeline
+        x-go-custom-tag: "gorm:\"namespace,omitempty\""
+      version:
+        type: string
+        description: version of the pipeline
+        x-go-custom-tag: "gorm:\"primaryKey\""
+      image_name:
+        type: string
+        description: Image Name of the job/pipeline
+        x-go-custom-tag: "gorm:\"image_name,omitempty\""
+      image_version:
+        type: string
+        description: Image Version of the job/pipeline
+        x-go-custom-tag: "gorm:\"image_version,omitempty\""
+      cmds:
+        type: string
+        description: Commands of the job/pipeline task
+        x-go-custom-tag: "gorm:\"cmds,omitempty\""
+      arguments:
+        type: string
+        description: Arguments to the job/pipeline task
+        x-go-custom-tag: "gorm:\"arguments,omitempty\""
+      resources:
+        type: string
+        description: Resources of the job/pipeline
+        x-go-custom-tag: "gorm:\"resources,omitempty\""
+      volumes:
+        type: array
+        items:
+          $ref: '#/definitions/Volume'
+        description: Volumes to be attached to the job/pipeline task
+        x-go-custom-tag: "gorm:\"volumes;foreignKey:task_id,pipeline_id,version\""
+      task_in_cluster:
+        type: string
+        description: Whether the task runs in cluster or not
+        x-go-custom-tag: "gorm:\"task_in_cluster,omitempty\""
+      node_pool:
+        type: string
+        description: Pool name of the task to be launched
+        x-go-custom-tag: "gorm:\"node_pool,omitempty\""
+      memory_limit:
+        type: string
+        description: Max memory allocated for the task job.
+        x-go-custom-tag: "gorm:\"memory_limit,omitempty\""
+      cpu_limit:
+        type: string
+        description: Max cpu cores allocated for the task job.
+        x-go-custom-tag: "gorm:\"cpu_limit,omitempty\""
+      gpu_limit:
+        type: string
+        description: Max gpu cards allocated for the task job
+        x-go-custom-tag: "gorm:\"gpu_limit,omitempty\""
+      task_trigger_rule:
+        type: string
+        description: Task id of the job/pipeline
+        x-go-custom-tag: "gorm:\"task_trigger_rule,omitempty\""
+      env_variables:
+        type: string
+        description:
+          simple json format data containing the environment variables required
+          to run the task.
+        x-go-custom-tag: "gorm:\"env_variables;type:LONGTEXT\""
+      delete_pod_operator:
+        type: boolean
+        description:
+          Whether to delete the pod or not after the execution of the task is
+          completed .
+        x-go-custom-tag: "gorm:\"delete_pod_operator,omitempty\""
+      get_logs:
+        type: boolean
+        description: Task id of the job/pipeline
+        x-go-custom-tag: "gorm:\"get_logs,omitempty\""
+      notebook_task:
+        type: boolean
+        description:
+          Is this a Notebook task or a generic task . Notebook task will be executed by papermill.
+        x-go-custom-tag: "gorm:\"notebook_task,omitempty\""
+      notebook_output_path:
+        type: string
+        description: output path of the notebook
+        x-go-custom-tag: "gorm:\"notebook_output_path,omitempty\""
+      notebook_input_path:
+        type: string
+        description: input path of the notebook including the notebook name
+        x-go-custom-tag: "gorm:\"notebook_input_path,omitempty\""
+      kernel_execution_mode:
+        type: string
+        description: Notebook kernel type, value from "PYTHON3, R, SCALA" default PYTHON3
+        x-go-custom-tag: "gorm:\"kernel_execution_mode,omitempty\""
+      xcom_push:
+        type: boolean
+        description: Whether to push the json values to xcom
+        x-go-custom-tag: "gorm:\"xcom_push,omitempty\""
+      x_variables_pull:
+        type: boolean
+        description: Whether to pull the variables from another task.
+        x-go-custom-tag: "gorm:\"x_variables_pull,omitempty\""
+      x_variable_task_keys:
+        type: string
+        description: simple json format
+        x-go-custom-tag: "gorm:\"x_variable_task_keys,omitempty\""
+  PipelineInfo:
+    properties:
+      status:
+        type: string
+        enum:
+          - 'failed'
+          - 'pending'
+          - 'submitted'
+          - 'paused'
+        description: job status
+      file_token:
+        type: string
+        description: file token
+      file_loc:
+        type: string
+        description: file abs path
+      pipeline:
+        $ref: '#/definitions/Pipeline'
+  TaskInstanceLogCollection:
+    type: array
+    items:
+      $ref: '#/definitions/TaskInstanceLog'
+  TaskInstanceLog:
+    properties:
+      task:
+        $ref: '#/definitions/TaskInstance'
+      log:
+        type: string
+  TaskInstance:
+    properties:
+      task_id:
+        type: string
+      pipeline_id:
+        type: string
+      job_type:
+        type: string
+      app_name:
+        type: string
+      project_name:
+        type: string
+      job_run_id:
+        type: string
+      try_number:
+        type: integer
+        format: int32
+        description: task retries
+      token:
+        type: string
+  TaskInstanceInfo:
+    properties:
+      task_id:
+        type: string
+      pipeline_id:
+        type: string
+      state:
+        type: string
+        enum:
+          - 'success'
+          - 'running'
+          - 'failed'
+          - 'upstream_failed'
+          - 'skipped'
+          - 'up_for_retry'
+          - 'up_for_reschedule'
+          - 'queued'
+          - 'none'
+          - 'scheduled'
+          - 'removed'
+      execution_time:
+        type: string
+        description: task start time
+      try_number:
+        type: integer
+        format: int32
+        description: task retries
+      pid:
+        type: integer
+        format: int32
+        description: pid
+      start_time:
+        type: string
+        description: task start time
+      end_time:
+        type: string
+        description: task end time
+      host_name:
+        type: string
+        description: host run on
+      priority_weight:
+        type: integer
+        format: int32
+        description: priority weight
