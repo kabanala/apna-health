@@ -1,0 +1,47 @@
+##Search Doctors in 500070 area for Gynocologist
+
+-- select first_name, last_name, rating,consultation_fee, wait_time from bh_hspt_db.doctor_info where zip_code = '500070' and 'gynocologist' in UNNEST (speciality_id)
+
+##Search Doctors in 500070 area 
+
+-- select first_name, last_name, rating,consultation_fee, wait_time, speciality_id from bh_hspt_db.doctor_info where zip_code = '500070'
+
+##Search  General Physicians Doctors in Particular Hospital like for ex: MedPlus
+
+-- select doctor.first_name, doctor.last_name, hospital.ratings,doctor.consultation_fee, doctor.wait_time, doctor.speciality_id from bh_hspt_db.hospital_info hospital
+join bh_hspt_db.doctor_info doctor 
+on hospital.hospital_id = doctor.hospital_id where hospital.zip_code = '500070' and 'general_physician' in UNNEST (doctor.speciality_id) 
+and hospital.name = 'Medplus Hospital'
+
+##Search Specfic Doctor in Spefic Hospital
+
+-- select doctor.first_name, doctor.last_name, hospital.ratings,doctor.consultation_fee, doctor.wait_time, doctor.speciality_id from bh_hspt_db.hospital_info hospital
+join bh_hspt_db.doctor_info doctor 
+on hospital.hospital_id = doctor.hospital_id where hospital.zip_code = '500070' and 'general_physician' in UNNEST (doctor.speciality_id) 
+and hospital.name = 'Medplus Hospital' and first_name = 'Akhil'
+
+
+###Check Patients visit, Appt for Symtoms, and tests ordered and test results 
+
+ select patient.first_name, patient.last_name, patient.medical_id, 
+appt.visit_id, 
+appt.symptoms,
+labs.tests_speciality, labs.result, labs.result_details,
+doctor.first_name,doctor.last_name
+from bh_ptnt_db.patient_info patient
+join bh_labs_db.lab_results labs
+ON patient.visit_id = labs.visit_id
+join bh_appt_db.appointments appt
+ON patient.visit_id = appt.visit_id
+join bh_hspt_db.doctor_info doctor
+ON doctor.doctor_id = appt.doctor_id
+
+
+###### Offline ETL Job to update medical records every day###
+
+--INSERT INTO bh_med_rec_db.tests
+--SELECT lab.pat_id,lab.doctor_id,lab.medical_id,lab.visit_id,lab.tests_speciality,lab.test_date,lab.test_time,lab_info.name,lab_info.location,lab.result,
+--lab.result_date, lab.result_time,lab.result_details
+--FROM bh_labs_db.lab_results lab
+--join bh_labs_db.lab_info lab_info
+ --on lab.lab_id = lab_info.lab_id

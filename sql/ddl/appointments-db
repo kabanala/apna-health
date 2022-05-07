@@ -7,9 +7,36 @@ bq query bq query --use_legacy_sql=false "CREATE TABLE bh_appt_db.appointments (
     doctor_id string OPTIONS(description="the unique id of the health care provider that the patient is going to visit "),
     lab_id string OPTIONS(description="unique id of the lab that the patient is going to visit"),
     speciality string OPTIONS(description="speciality of the health care provider"),
-    symptoms string OPTIONS(description="symptons of the patient "),
-    appointmentDate string OPTIONS(description="Date of the appointment"),
-    appointmentTime string OPTIONS(description="Time of the Appointment"),
+    symptoms ARRAY<STRING> OPTIONS(description="symptons of the patient "),
+    appointmentDate date OPTIONS(description="Date of the appointment"),
+    appointmentTime time OPTIONS(description="Time of the Appointment"),
     location string OPTIONS(description="Location of the health care provider or lab"),
     visit_status boolean OPTIONS(description="whether the patient visited the health provider"),
-    visit_type string OPTIONS(description="type of visit whether it is a  clinic or lab or inpatient"))"
+    visit_type string OPTIONS(description="type of visit whether it is a  clinic or lab or inpatient"),
+    visit_id string OPTIONS(description="visit id for each doc/lab visit"))
+    
+    
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('258978', 'D78950', 'LB39840', 'general_physician', ["fever", "chills"], '2022-04-14', '09:15:00', 'Road no 10 LB Nagar Hyderabad', FALSE, 'clinic', '8902 ')
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('257987', 'D78951', 'LB39840', 'general_physician', ["stomach burn", "diarrhea"], '2022-04-14', '10:15:00', 'Road no 10 LB Nagar Hyderabad', FALSE, 'clinic', '8903')
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('256777', 'D78771', 'null', 'gynocologist', ["baby growth", "regular checkup"], '2022-04-17', '01:15:00', 'Door no 32 Vaidehi Nagar RangaReddy', FALSE, 'clinic', '8904')
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('254908', 'D78601', 'null', 'neurology', ["nerves pain", "headache"], '2022-04-17', '01:15:00', 'Appt no 1234/a Saraswathi Nagar Guntur', FALSE, 'clinic', '8905')
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('254890', 'D78501', 'null', 'neurology', ["nerves pain", "headache"], '2022-04-21', '01:15:00', 'Door no 34/b swathi road Delhi', FALSE, 'clinic', ' 8906')
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('257879', 'D78661', 'null', 'neurology', ["nerves pain", "headache"], '2022-04-29', '04:30:00', 'Road no 555 hyder ali road Culcutta', FALSE, 'clinic', '8907')
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('257101', 'D78591', 'null', 'general_physician', ["fever", "headache"], '2022-04-30', '02:30:00', 'Road no 31 vinaynagar colony gujrat', FALSE, 'clinic', '8908')  
+
+bq query bq query --use_legacy_sql=false "INSERT bh_appt_db.appointments (patient_id, doctor_id, lab_id, speciality, symptoms, appointmentDate, appointmentTime, location, visit_status, visit_type, visit_id)
+                             values('258323', 'D78910', 'null', 'gynocologist', ["baby check"], '2022-05-15', '01:30:00', 'Road no 1324 Gaya colony Banglore', FALSE, 'clinic', '8909')  
+  

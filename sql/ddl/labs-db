@@ -2,13 +2,13 @@ gcloud config set project $$$$$$$$$$
 
 bq mk --dataset bh_labs_db
 
-bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.technician_info (
+bq query --use_legacy_sql=false "bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.technician_info (
        technician_id string OPTIONS(description="the unique id for the technician, Can be auto generated or created by the backend service"),
        lab_id string OPTIONS(description="unique id of the lab where the technician belongs to "),
        first_name string OPTIONS(description="first name of the technician"),
        last_name string OPTIONS(description="last name of the technician"),
        location string OPTIONS(description="primary address of the technician"),
-       speciality string OPTIONS(description="expertise of tests that can be performed by  the technician "),
+       speciality ARRAY<STRING> OPTIONS(description="expertise of tests that can be performed by  the technician "),
        email_id string OPTIONS(description="email address of the technician"),
        phone_no string OPTIONS(description="phone number of the technician"),
        zip_code string OPTIONS(description="zipcode of the technician"),
@@ -23,7 +23,8 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_info (
        name string OPTIONS(description="name of the lab"),
        location string OPTIONS(description="location of the lab"),
        zipcode string OPTIONS(description="location of the zipcode"),
-       test_id string OPTIONS(description="unique id of the test"),
+       test_id ARRAY<STRING> OPTIONS(description="unique id of the test"),
+       tests_speciality ARRAY<STRING> OPTIONS(description="unique id of the test"),
        test_fees string OPTIONS(description="fees of the tests"),
        total_slots string OPTIONS(description="total slots available"),
        email_id string OPTIONS(description="email address of the lab"),
@@ -33,15 +34,86 @@ bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_info (
        rating string OPTIONS(description="rating/score(1-5) about the technician"),
        issue string OPTIONS(description="Issues filed about the technician"),
        license_no string OPTIONS(description="license no provdided by the government to perform the tests"),
-       certificate string OPTIONS(description="certification provided by the government to run the lab"))"
+       certification string OPTIONS(description="certification provided by the government to run the lab"))"
        
    bq query bq query --use_legacy_sql=false "CREATE TABLE bh_labs_db.lab_results (
+       lab_id string,
+       pat_id string OPTIONS(description="patitent id of the patient"),
        medical_id string OPTIONS(description="medical id of the patient"),              
        doctor_id string OPTIONS(description="doctor id who prescribed the test"),
-       test_type string OPTIONS(description="unique identification of the test"),
-       test_date string OPTIONS(description="date of the test done"),
-       test_time string OPTIONS(description="time of the test done"),
+       visit_id string OPTIONS(description="visit id for each doc/lab visit"),
+       test_id ARRAY<STRING> OPTIONS(description="unique identification of the test"),
+       tests_speciality ARRAY<STRING> OPTIONS(description="unique id of the test"),
+       test_date date OPTIONS(description="date of the test done"),
+       test_time time OPTIONS(description="time of the test done"),
        result_date string OPTIONS(description="date of the result provided"),
        result_time string OPTIONS(description="time of the result provided"),
-       result string OPTIONS(description="final result of the test"),
-       result_details string OPTIONS(description="Detail description of the result"))"
+       result ARRAY<STRING> OPTIONS(description="final result of the test"),
+       result_details ARRAY<STRING>  OPTIONS(description="Detail description of the result"))"
+       
+       
+#########bh_labs_db.technician_info DML #################
+
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                             values('LT60018', ' LB30987', 'Bharadwaj', 'Rathod', 'Road no 55 LB Nagar Hyderabad', ["xray", "ecg", "blood tests", "complete radiology"], 'mlab@gmail.com', '7012567123', '500070', 'yes', 'LB22587', 'reasonable prices', '3.5', 'NULL')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                             values('LT60902', ' LB30765', 'Raj', 'Kumar', 'Road no 10 LB Nagar Hyderabad', ["MRI", "UltraSound", "CTScan", "Covid", "Thyrocare", "All Blood Work"], 'labs@medplus.com', '040-414567890x4', '500070', 'yes', 'LB22857', 'Excellent Service', '4', 'NULL')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                             values('LT60023', ' LB30587', 'Jessie', 'Pink', 'Door no 105  Ragas Place Warangal', ["UltraSound", "Covid", "All Blood Work"], 'jessie@gmail.com', '080-914567890x9', '500093', 'yes', 'LB22701', 'Poor Service', '2.5', 'No Hygeine')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60987', ' LB30872', 'Vijay', 'Sathu', 'Road no 159/a  Gangapuram RangaReddy', ["UltraSound", "MRI", "CTScan", "Covid", "All Blood Work"], 'konark@gmail.com', '080-924567890x2', '501359', 'yes', 'LB22991', 'Very Clean and fast Service', '4', 'NULL')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60715', ' LB30721', 'Alice', 'San', 'Road no 191/b  Puranaphool Guntur', ["MRI", "Covid", "Blood Work"], 'alice@gmail.com', '020-24567890x1', '590834', 'yes', 'LB22781', 'Very quick Service', '3.5', 'NULL')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60155', ' LB30217', 'bob', 'marley', 'Road no 14/b/c  Talabkatta Delhi', ["MRI", "CTScan", "UltraSound", "Covid", "Blood Work"], 'bob@gmail.com', '030-4678910x3', '400234', 'yes', 'LB22817', 'Very Professional', '4', 'NULL')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60551', ' LB30728', 'Raaga', 'Kundas', 'Road no 11/c Kendralaya Culcutta', ["MRI", "CTScan", "UltraSound", "Covid", "Blood Work"], 'raaga@gmail.com', '090-6789109x3', '900234', 'yes', 'LB22187', 'Very Poor Service', '2.5', 'NULL')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60510', ' LB30287', 'Sanjay', 'Patel', 'Road no 55 Layamat Circle Gujrat', ["CTScan", "UltraSound", "Covid", "Blood Work"], 'konark@gmail.com', '090-7689109x3', '890345', 'yes', 'LB22817', 'Very Slow Service', '3', 'NULL')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60132', ' LB30281', 'Satyadevi', 'Prasa', 'Road no 2345 CRPF Gate 12 Banglore', ["UltraSound", "MRI", "CTScan", "UltraSound", "Covid", "Blood Work"], 'satya@gmail.com', '090-8912309x4', '789043', 'yes', 'LB22879', 'Friednly Staff', '3.5', 'NULL')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.technician_info(technician_id, lab_id, first_name, last_name, location, speciality, email_id, phone_no, zip_code, certification, license_no, reviews, rating, issue)                   
+                            values('LT60332', ' LB30821', 'Yasin', 'Mohd', 'Road no 35 Chanch Ghat Kerala', ["UltraSound", "MRI", "CTScan", "UltraSound", "Covid", "Blood Work"], 'yasin@gmail.com', '090-9812309x4', '650982', 'yes', 'LB22791', 'Friednly technician', '3.5', 'NULL')"
+
+########### bh_labs_db.lab_info DML######################
+
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality,test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification)                   
+                               values('LB30987', 'mlab', 'Road no 55 LB Nagar Hyderabad', '500070', ["CT100", "USC192", "BT205", "RD129"], ["xray", "ecg", "blood tests", "complete radiology"],'900', '50', 'mlab@gmail.com', '9am-8pm-ist', '7012567123', 'reasonable prices', '3.5', 'NULL', 'LB22587',  'yes')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality, test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                              values('LB30765', 'medplus', 'Road no 10 LB Nagar Hyderabad', '500070', ["MR200", "USC192", "CT100", "COV19",  "TY987", "BT205"],["MRI", "UltraSound", "CTScan", "Covid", "Thyrocare", "All Blood Work"], '1200', '30', 'labs@medplus.com', '9am-10pm-ist', '040-414567890x4', 'Excellent Service', '4', 'NULL', 'LB22857', 'yes')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality, test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                              values('LB30587', 'ScanEx Labs', 'Door no 105  Ragas Place Warangal', '500093', ["USC192", "COV19", "BT205"], ["UltraSound", "Covid", "All Blood Work"], '600', '80', 'jessie@gmail.com', '9am-6pm-ist', '080-914567890x9', 'Poor Service', '2.5', 'No Hygeine', 'LB22701', 'yes')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality, test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                              values('LB30872', 'Konark Diagnostic Centre', 'Road no 159/a  Gangapuram RangaReddy', '501359', ["USC192", "MR200", "CT100", "COV19", "BT205"], ["UltraSound", "MRI", "CTScan", "Covid", "All Blood Work"], '1200', '100', 'konark@gmail.com', '8am-10pm-ist', '080-924567890x2', 'Very Clean and fast Service', '4', 'NULL', 'LB22991', 'yes')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality,test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                              values('LB30721', 'Aplus Labs Inc', 'Road no 191/b  Puranaphool Guntur', '590834', ["MR200", "COV19", "BT205"], ["MRI", "Covid", "Blood Work"], '500', '40', 'alice@gmail.com', '9am-7pm-ist', '020-24567890x1', 'Very quick Service', '3.5', 'NULL', 'LB22781',  'yes')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality, test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                              values('LB30217', 'bandra tests', 'Road no 14/b/c  Talabkatta Delhi', '400234', ["MR200", "CT100", "USC192", "COV19", "BT205"], ["MRI", "CTScan", "UltraSound", "Covid", "Blood Work"], '1000', '90', 'bob@gmail.com', '8AM-10pm-ist', '030-4678910x3', 'Very Professional', '4', 'NULL', 'LB22817',  'yes')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality,test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                             values('LB30728', 'Raagas Diagnostics', 'Road no 11/c Kendralaya Culcutta', '900234', ["MR200", "CT100", "USC192", "COV19", "BT205"], ["MRI", "CTScan", "UltraSound", "Covid", "Blood Work"], '1200', '80', 'raaga@gmail.com', '10am-10pm-ist', '090-6789109x3', 'Very Poor Service', '2.5', 'NULL', 'LB22187', 'yes')" 
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality,test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                             values('LB30281', 'Satya Scans', 'Road no 2345 CRPF Gate 12 Banglore', '789043', ["USC192", "MR200", "CT100", "COV19", "BT205"], ["UltraSound", "MRI", "CTScan", "Covid", "Blood Work"], '1000', '50', 'satya@gmail.com', '11am-9pm-ist', '090-8912309x4', 'Friednly Staff', '3.5','NULL', 'LB22879',  'yes')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality, test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                            values('LB30287', 'Patel Labs', 'Road no 55 Layamat Circle Gujrat', '890345', ["CT100", "USC192", "COV19", "BT205"], ["CTScan", "UltraSound", "Covid", "Blood Work"], '1500', '120', 'patel@gmail.com', '10:30-10pm-ist', '090-7689109x3', 'Very Slow Service', '3', 'NULL', 'LB22817', 'yes')"
+bq query --use_legacy_sql=false "INSERT bh_labs_db.lab_info(lab_id, name, location, zipcode, test_id, tests_speciality, test_fees, total_slots, email_id, available_timings, phone_num, patient_reviews, rating, issue, license_no, certification) 
+                            values('LB30821', 'Alpha Labs', 'Road no 35 Chanch Ghat Kerala','650982', ["USC192", "MR200", "CT100", "COV19", "BT205"], ["UltraSound", "MRI", "CTScan", "Covid", "Blood Work"], '950', '80', 'yasin@gmail.com', '9am-9pm-ist', '090-9812309x4', 'Friednly technician', '3.5', 'NULL', 'LB22791',  'yes')"
+                            
+                          
+############ bh_labs_db.lab_results DML#################################
+                        
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                values('LB30987','258978','1408591', 'D78950', '8902', ["CT100", "BT205"], ["CTScan", "Blood Work"], '2022-04-18', '09:30:00', '2022-04-19', '10:00:00', ["CT100=Normal", "BT205=ATS-35"], ["No abnormality in CT Scan", "Med Fatty lever"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30765', '257987','1408221', 'D78951', '8903', ["USC192"], ["UltraSound"], '2022-04-10', '11:30:00', '2022-04-12', '10:30:00', ["USC192=AbNormal"], ["abnormality UltraSound See attached"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30587','254908','1409876', 'D78601', '8905', ["COV19"], ["Covid"], '2022-03-18', '11:45:00', '2022-03-19', '10:05:00', ["COV19=Negative"], ["No sars-covid"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30872','256777','1402345', 'D78771', '8904', ["BT205"], ["Blood Work"], '2022-04-10', '11:30:00', '2022-04-12', '10:00:00', ["BT205=Sugar-240"], ["abnormality Sugar Levels"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30721', '254890','1403456', 'D78501', '8906', ["MR200"], ["MRI"], '2022-04-01', '12:30:00', '2022-04-05', '4:00:00', ["MR200=Normal"], ["No abnormality in MRI Scan"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30217','257879','1409988', 'D78661', '8907', ["COV19"], ["Covid"], '2022-02-18', '04:30:00', '2022-02-19', '08:00:00', ["COV19=Positive"], ["sars-covid Positive"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                                 values('LB30728','257101', '1408767', 'D78591', '8908', ["CT100"], ["CTScan"], '2022-04-05', '09:45:00', '2022-04-06', '10:55:00', ["CT100=AbNormal"], ["abnormality in CT Scan see attached"])"
+bq query --use_legacy_sql=false "INSERT INTO bh_labs_db.lab_results(lab_id, pat_id, medical_id, doctor_id, visit_id, test_id, tests_speciality, test_date, test_time, result_date, result_time, result, result_details)
+                            values('LB30281', '258323', '1402349', 'D78910', ' 8909', ["BT205"], ["Blood Work"], '2022-03-18', '02:30:00', '2022-03-19', '4:30:00', ["BT205=Sugar-240"], ["High Sugar Levels Detected"])"
