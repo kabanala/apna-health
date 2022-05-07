@@ -1,4 +1,41 @@
-list  all the patients 
+points to discuss: 
+
+  - (may/07/2022)
+     -> should we provide the doctor search path on the patient main page or After the patient selects the create appointment ?
+     -> Where are we capturing the doctor's available slots to show it to the patients,I remember we decide to calculate the slots based on the doctor's 
+        available time and the wait time , but once the slot is booked , should we maintain a different table to maintain the booked slots or should we calculate everytime the user requests for the available slots ?
+
+
+
+
+
+list  all the patient end points : 
+  signup : 
+            post: to sign in the patient with personal information
+  login: 
+            post
+  [patientID/phoneNum]/appointments:
+            get: get all  the list of appointments
+  [patientID/phoneNum]/appointments/appointment:
+            post: create appointment
+            get: get the appointment details
+            put: update the appointment 
+            delete: delete the existing appointment 
+
+
+/appointments/zipcode:
+   get: list all the doctors available in the zipcode, 
+       note : (the payload can have following attributes -  (cond1: zipcode and  speciality, cond2: zipcode only))
+
+/appointments/gpsLocation:
+/appointments/doctor:
+   get: list all the available dates and times of the doctor. fetch the data from the doctor's 
+/appointments/lab
+/appointments/speciality
+/appointments/
+
+
+
 get the patient with patient id 
 get the appointments with patient id
 
