@@ -10,9 +10,11 @@ points to discuss:
 
 
 list  all the patient end points : 
+
+appify -> UI -> signup -> http://backend-rest-api-service:8080/signup 
   signup : 
-            post: to sign in the patient with personal information
-  login: 
+            post: to sign in the patient with personal information ( patient DB, patient_profile Table)
+   login: 
             post
   [patientID/phoneNum]/appointments:
             get: get all  the list of appointments
